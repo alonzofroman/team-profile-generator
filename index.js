@@ -31,6 +31,8 @@ const questions = [
     }
 ];
 
+const employeeTeam = [];
+
 function init() {
     inquirer.prompt(questions)
     .then(data => {
@@ -38,9 +40,13 @@ function init() {
         if (data.role === 'Engineer') {
             inquirer.prompt([{
                 type: 'input',
-                name: 'office',
-                message: 'What is the employee office number?'
-            }]).then(data => {console.log(data)})
+                name: 'github',
+                message: 'What is the employee Github username?'
+            }]).then(response => {
+                // console.log(response); console.log(data);
+                let newEmployee = new Engineer(data.name, data.role, data.id, data.email, response.github);
+                employeeTeam.push(newEmployee);
+            }) 
         }
         
         else if (data.role === 'Intern') {
@@ -48,7 +54,11 @@ function init() {
                 type: 'input',
                 name: 'school',
                 message: 'What is the employee school name?'
-            }]).then(data => {console.log(data)})
+            }]).then(response => {
+                // console.log(response); console.log(data);
+                let newEmployee = new Intern(data.name, data.role, data.id, data.email, response.school);
+                employeeTeam.push(newEmployee);
+            }) 
         }
         
         
@@ -57,10 +67,17 @@ function init() {
                 type: 'input',
                 name: 'office',
                 message: 'What is the employee office phone number?'
-            }]).then(data => {console.log(data)})
+            }]).then(response => {
+                // console.log(response); console.log(data)
+                let newEmployee = new Manager(data.name, data.role, data.id, data.email, response.office);
+                employeeTeam.push(newEmployee);
+            }) 
         }
         
-    })
+    }).then(console.log(employeeTeam))
 }
+
+
+
 
 init();
