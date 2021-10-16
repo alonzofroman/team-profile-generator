@@ -91,6 +91,7 @@ function anotherMember() {
         choices: ['yes', 'no']
     }]).then(extraMember => {
         if (extraMember.newEmployee === 'yes') {
+            // console.log('press any key to continue');
             init();
         }
         else {
@@ -99,9 +100,83 @@ function anotherMember() {
     })
 }
 
-
+// Start everything
 init();
 
+//Constants for html template
+const indexTemplate = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Team Profiles</title>
+</head>
+<body>
+    
+<header class="header">
+    <h1>Team Name</h1>
+</header>
+
+<main>
+<div class="employees">
+
+${teamTemplate}
+
+
+</div>
+
+</main>
+
+</body>
+</html>
+`
+
+const managerTemplate = `
+<div class="member-card"> 
+        <div class="card-header">
+            <h3 class="member-name">${this.name}</h3>
+            <h3 class="member-role">Manager</h3>
+        </div>
+        <div class="card-body">
+            <p class="member-id">ID: ${this.id}</p>
+            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
+            <p class="member-cred">Office Number: ${this.office}"</p>
+        </div>
+    </div>
+`
+
+const engineerTemplate = `
+<div class="member-card"> 
+        <div class="card-header">
+            <h3 class="member-name">${this.name}</h3>
+            <h3 class="member-role">Engineer</h3>
+        </div>
+        <div class="card-body">
+            <p class="member-id">ID: ${this.id}</p>
+            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
+            <p class="member-cred">Github: <a href="https://github.com/${this.github}>${this.github}</a>"</p>
+        </div>
+    </div>
+`
+
+const internTemplate = `
+<div class="member-card"> 
+        <div class="card-header">
+            <h3 class="member-name">${this.name}</h3>
+            <h3 class="member-role">Intern</h3>
+        </div>
+        <div class="card-body">
+            <p class="member-id">ID: ${this.id}</p>
+            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
+            <p class="member-cred">School: ${this.school}"</p>
+        </div>
+    </div>
+`
+
 function generateHtml() {
-    console.log('stage');
+    console.log(employeeTeam);
+
 }
