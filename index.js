@@ -31,8 +31,10 @@ const questions = [
     }
 ];
 
+//Create array for all employees
 const employeeTeam = [];
 
+//Function to receive informtation on employees
 function init() {
     inquirer.prompt(questions)
     .then(data => {
@@ -46,6 +48,7 @@ function init() {
                 // console.log(response); console.log(data);
                 let newEmployee = new Engineer(data.name, data.role, data.id, data.email, response.github);
                 employeeTeam.push(newEmployee);
+                anotherMember();
             }) 
         }
         
@@ -58,6 +61,7 @@ function init() {
                 // console.log(response); console.log(data);
                 let newEmployee = new Intern(data.name, data.role, data.id, data.email, response.school);
                 employeeTeam.push(newEmployee);
+                anotherMember();
             }) 
         }
         
@@ -71,13 +75,33 @@ function init() {
                 // console.log(response); console.log(data)
                 let newEmployee = new Manager(data.name, data.role, data.id, data.email, response.office);
                 employeeTeam.push(newEmployee);
+                anotherMember();
             }) 
         }
         
     }).then(console.log(employeeTeam))
 }
 
-
+//Call for another team member
+function anotherMember() {
+    inquirer.prompt([{
+        type: 'list',
+        name: 'newEmployee',
+        message: 'Would you like to add another employee?',
+        choices: ['yes', 'no']
+    }]).then(extraMember => {
+        if (extraMember.newEmployee === 'yes') {
+            init();
+        }
+        else {
+            generateHtml();
+        }
+    })
+}
 
 
 init();
+
+function generateHtml() {
+    console.log('stage');
+}
