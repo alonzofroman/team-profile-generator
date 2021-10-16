@@ -10,7 +10,7 @@ describe('Engineer class', () => {
     });
     describe('Engineer Role', () => {
         it('Has a role', () => {
-            expect(engineer.role).toBe('engineer')
+            expect(engineer.role).toBe('Engineer')
         });
     });
     describe('Engineer ID', () => {
@@ -25,7 +25,7 @@ describe('Engineer class', () => {
     });
     describe('Engineer Github username', () => {
         it('Has a Github username', () => {
-            expect(engineer.gitHub).toBe('gitusername')
+            expect(engineer.github).toBe('gitusername')
         });
     });
 });

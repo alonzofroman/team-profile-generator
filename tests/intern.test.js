@@ -1,16 +1,16 @@
 const Intern = require("../lib/intern")
 
 describe('intern class', () => {
-    const intern = new Intern('Byleth', 'intern', '3', 'pleasehelpme@ofc.edu', 'Officers Academy');
+    const intern = new Intern('Byleth', 'Intern', '3', 'pleasehelpme@ofc.edu', 'Officers Academy');
 
     describe('intern name', () => {
         it('Has a name', () => {
-            expect(intern.name).toBe('Robin')
+            expect(intern.name).toBe('Byleth')
         });
     });
     describe('intern Role', () => {
         it('Has a role', () => {
-            expect(intern.role).toBe('intern')
+            expect(intern.role).toBe('Intern')
         });
     });
     describe('intern ID', () => {
