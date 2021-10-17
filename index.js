@@ -218,11 +218,14 @@ function generateHtml() {
         }
         else {console.log('Members not grabbed')};
     };
-    fs.appendFile('./dist/index.html', endIndex, function(err) {
-        if (err) {
-            throw err;
-        }
-
-    })
+    setTimeout(
+        fs.appendFile('./dist/index.html', endIndex, function(err) {
+            if (err) {
+                throw err;
+            }
+    
+        }),1000
+    );
+    
     console.log('Generated Html');
 }
