@@ -37,49 +37,49 @@ const employeeTeam = [];
 //Function to receive informtation on employees
 function init() {
     inquirer.prompt(questions)
-    .then(data => {
-        // console.log(data);
-        if (data.role === 'Engineer') {
-            inquirer.prompt([{
-                type: 'input',
-                name: 'github',
-                message: 'What is the employee Github username?'
-            }]).then(response => {
-                // console.log(response); console.log(data);
-                let newEmployee = new Engineer(data.name, data.role, data.id, data.email, response.github);
-                employeeTeam.push(newEmployee);
-                anotherMember();
-            }) 
-        }
-        
-        else if (data.role === 'Intern') {
-            inquirer.prompt([{
-                type: 'input',
-                name: 'school',
-                message: 'What is the employee school name?'
-            }]).then(response => {
-                // console.log(response); console.log(data);
-                let newEmployee = new Intern(data.name, data.role, data.id, data.email, response.school);
-                employeeTeam.push(newEmployee);
-                anotherMember();
-            }) 
-        }
-        
-        
-        else if (data.role === 'Manager') {
-            inquirer.prompt([{
-                type: 'input',
-                name: 'office',
-                message: 'What is the employee office phone number?'
-            }]).then(response => {
-                // console.log(response); console.log(data)
-                let newEmployee = new Manager(data.name, data.role, data.id, data.email, response.office);
-                employeeTeam.push(newEmployee);
-                anotherMember();
-            }) 
-        }
-        
-    })
+        .then(data => {
+            // console.log(data);
+            if (data.role === 'Engineer') {
+                inquirer.prompt([{
+                    type: 'input',
+                    name: 'github',
+                    message: 'What is the employee Github username?'
+                }]).then(response => {
+                    // console.log(response); console.log(data);
+                    let newEmployee = new Engineer(data.name, data.role, data.id, data.email, response.github);
+                    employeeTeam.push(newEmployee);
+                    anotherMember();
+                })
+            }
+
+            else if (data.role === 'Intern') {
+                inquirer.prompt([{
+                    type: 'input',
+                    name: 'school',
+                    message: 'What is the employee school name?'
+                }]).then(response => {
+                    // console.log(response); console.log(data);
+                    let newEmployee = new Intern(data.name, data.role, data.id, data.email, response.school);
+                    employeeTeam.push(newEmployee);
+                    anotherMember();
+                })
+            }
+
+
+            else if (data.role === 'Manager') {
+                inquirer.prompt([{
+                    type: 'input',
+                    name: 'office',
+                    message: 'What is the employee office phone number?'
+                }]).then(response => {
+                    // console.log(response); console.log(data)
+                    let newEmployee = new Manager(data.name, data.role, data.id, data.email, response.office);
+                    employeeTeam.push(newEmployee);
+                    anotherMember();
+                })
+            }
+
+        })
 }
 
 //Call for another team member
@@ -149,7 +149,7 @@ function managerTemplate() {
             </div>
         </div>
     `
-} 
+}
 
 // Engineer template
 function engineerTemplate() {
@@ -166,7 +166,7 @@ function engineerTemplate() {
             </div>
         </div>
     `
-} 
+}
 
 // Intern template
 function internTemplate() {
@@ -183,49 +183,56 @@ function internTemplate() {
             </div>
         </div>
     `
-}  
+}
 
 
 // Function to write html page
 function generateHtml() {
-    fs.writeFile('./dist/index.html', indexTemplate, function(err) {
+    fs.writeFile('./dist/index.html', indexTemplate, function (err) {
         if (err) {
             throw err;
         }
     })
-    // console.log(employeeTeam);
-    for (i=0; i<employeeTeam.length; i++) {
+    generateCards();
+    generateEnd();
+    console.log('Generated HTML, check dist/ folder')
+}
+
+// Function to close divs and complete html
+function generateEnd() {
+    fs.appendFile('./dist/index.html', endIndex, function (err) {
+        if (err) {
+            throw err;
+        }
+
+    })
+}
+
+
+// Function to append file with employee cards
+function generateCards() {
+    for (i = 0; i < employeeTeam.length; i++) {
         if (employeeTeam[i].role == 'Manager') {
-            fs.appendFile('./dist/index.html', managerTemplate(employeeTeam[i]), function(err) {
+            fs.appendFile('./dist/index.html', managerTemplate(employeeTeam[i]), function (err) {
                 if (err) {
                     throw err;
                 }
             })
         }
         else if (employeeTeam[i].role == 'Engineer') {
-            fs.appendFile('./dist/index.html', engineerTemplate(employeeTeam[i]), function(err) {
+            fs.appendFile('./dist/index.html', engineerTemplate(employeeTeam[i]), function (err) {
                 if (err) {
                     throw err;
                 }
             })
         }
         else if (employeeTeam[i].role == 'Intern') {
-            fs.appendFile('./dist/index.html', internTemplate(employeeTeam[i]), function(err) {
+            fs.appendFile('./dist/index.html', internTemplate(employeeTeam[i]), function (err) {
                 if (err) {
                     throw err;
                 }
             })
         }
-        else {console.log('Members not grabbed')};
+        else { console.log('Members not grabbed') };
     };
-    setTimeout(
-        fs.appendFile('./dist/index.html', endIndex, function(err) {
-            if (err) {
-                throw err;
-            }
-    
-        }),1000
-    );
-    
-    console.log('Generated Html');
 }
