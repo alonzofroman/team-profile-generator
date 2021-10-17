@@ -79,7 +79,7 @@ function init() {
             }) 
         }
         
-    }).then(console.log(employeeTeam))
+    })
 }
 
 //Call for another team member
@@ -91,7 +91,7 @@ function anotherMember() {
         choices: ['yes', 'no']
     }]).then(extraMember => {
         if (extraMember.newEmployee === 'yes') {
-            // console.log('press any key to continue');
+            console.log('press up arrow to continue');
             init();
         }
         else {
@@ -185,7 +185,6 @@ function internTemplate() {
     `
 }  
 
-const teamTemplate = [];
 
 // Function to write html page
 function generateHtml() {
@@ -194,7 +193,7 @@ function generateHtml() {
             throw err;
         }
     })
-    console.log(employeeTeam);
+    // console.log(employeeTeam);
     for (i=0; i<employeeTeam.length; i++) {
         if (employeeTeam[i].role == 'Manager') {
             fs.appendFile('./dist/index.html', managerTemplate(employeeTeam[i]), function(err) {
