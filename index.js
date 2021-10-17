@@ -135,55 +135,61 @@ const endIndex = `
 `
 
 // Manager template
-const managerTemplate = `
-<div class="member-card"> 
-        <div class="card-header">
-            <h3 class="member-name">${this.name}</h3>
-            <h3 class="member-role">Manager</h3>
+function managerTemplate() {
+    return `
+    <div class="member-card"> 
+            <div class="card-header">
+                <h3 class="member-name">${employeeTeam[i].name}</h3>
+                <h3 class="member-role">Manager</h3>
+            </div>
+            <div class="card-body">
+                <p class="member-id">ID: ${employeeTeam[i].id}</p>
+                <p class="member-email">Email: <a href="mailto:${employeeTeam[i].email}">${employeeTeam[i].email}</a></p>
+                <p class="member-cred">Office Number: ${employeeTeam[i].office}</p>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="member-id">ID: ${this.id}</p>
-            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
-            <p class="member-cred">Office Number: ${this.office}"</p>
-        </div>
-    </div>
-`
+    `
+} 
 
 // Engineer template
-const engineerTemplate = `
-<div class="member-card"> 
-        <div class="card-header">
-            <h3 class="member-name">${this.name}</h3>
-            <h3 class="member-role">Engineer</h3>
+function engineerTemplate() {
+    return `
+    <div class="member-card"> 
+            <div class="card-header">
+                <h3 class="member-name">${employeeTeam[i].name}</h3>
+                <h3 class="member-role">Engineer</h3>
+            </div>
+            <div class="card-body">
+                <p class="member-id">ID: ${employeeTeam[i].id}</p>
+                <p class="member-email">Email: <a href="mailto:${employeeTeam[i].email}">${employeeTeam[i].email}</a></p>
+                <p class="member-cred">Github: <a href="https://github.com/${employeeTeam[i].github}">${employeeTeam[i].github}</a></p>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="member-id">ID: ${this.id}</p>
-            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
-            <p class="member-cred">Github: <a href="https://github.com/${this.github}>${this.github}</a>"</p>
-        </div>
-    </div>
-`
+    `
+} 
 
 // Intern template
-const internTemplate = `
-<div class="member-card"> 
-        <div class="card-header">
-            <h3 class="member-name">${this.name}</h3>
-            <h3 class="member-role">Intern</h3>
+function internTemplate() {
+    return `
+    <div class="member-card"> 
+            <div class="card-header">
+                <h3 class="member-name">${employeeTeam[i].name}</h3>
+                <h3 class="member-role">Intern</h3>
+            </div>
+            <div class="card-body">
+                <p class="member-id">ID: ${employeeTeam[i].id}</p>
+                <p class="member-email">Email: <a href="mailto:${employeeTeam[i].email}">${employeeTeam[i].email}</a></p>
+                <p class="member-cred">School: ${employeeTeam[i].school}</p>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="member-id">ID: ${this.id}</p>
-            <p class="member-email">Email: <a href="mailto:${this.email}">${this.email}</a></p>
-            <p class="member-cred">School: ${this.school}"</p>
-        </div>
-    </div>
-`
+    `
+}  
 
 const teamTemplate = [];
 
 // Function to write html page
 function generateHtml() {
-    fs.writeFile('genIndex.html', indexTemplate, function(err) {
+    fs.writeFile('./dist/index.html', indexTemplate, function(err) {
         if (err) {
             throw err;
         }
@@ -191,21 +197,21 @@ function generateHtml() {
     console.log(employeeTeam);
     for (i=0; i<employeeTeam.length; i++) {
         if (employeeTeam[i].role == 'Manager') {
-            fs.appendFile('genIndex.html', managerTemplate, function(err) {
+            fs.appendFile('./dist/index.html', managerTemplate(employeeTeam[i]), function(err) {
                 if (err) {
                     throw err;
                 }
             })
         }
         else if (employeeTeam[i].role == 'Engineer') {
-            fs.appendFile('genIndex.html', engineerTemplate, function(err) {
+            fs.appendFile('./dist/index.html', engineerTemplate(employeeTeam[i]), function(err) {
                 if (err) {
                     throw err;
                 }
             })
         }
         else if (employeeTeam[i].role == 'Intern') {
-            fs.appendFile('genIndex.html', internTemplate, function(err) {
+            fs.appendFile('./dist/index.html', internTemplate(employeeTeam[i]), function(err) {
                 if (err) {
                     throw err;
                 }
@@ -213,7 +219,7 @@ function generateHtml() {
         }
         else {console.log('Members not grabbed')};
     }
-    fs.appendFile('genIndex.html', endIndex, function(err) {
+    fs.appendFile('./dist/index.html', endIndex, function(err) {
         if (err) {
             throw err;
         }
