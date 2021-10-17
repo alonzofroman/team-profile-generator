@@ -1,11 +1,11 @@
 const Manager = require("../lib/manager")
 
 describe('Manager class', () => {
-    const manager = new Manager('Snake', 'manager', '4', 'bigboss@mg3.com', '555-5555');
+    const manager = new Manager('David', 'manager', '4', 'bigboss@gmail.com', '555-5555');
 
     describe('Manager name', () => {
         it('Has a name', () => {
-            expect(manager.name).toBe('Snake')
+            expect(manager.name).toBe('David')
         });
     });
     describe('Manager Role', () => {
@@ -20,12 +20,37 @@ describe('Manager class', () => {
     });
     describe('Manager email', () => {
         it('Has an email', () => {
-            expect(manager.email).toBe('bigboss@mg3.com')
+            expect(manager.email).toBe('bigboss@gmail.com')
         });
     });
     describe('Manager office number', () => {
         it('Has an office number', () => {
             expect(manager.office).toBe('555-5555')
+        });
+    });
+    describe('getName', () => {
+        it('Returns Name', () => {
+            expect(manager.getName()).toBe('David')
+        });
+    });
+    describe('getRole', () => {
+        it('Returns Role', () => {
+            expect(manager.getRole()).toBe('Manager')
+        });
+    });
+    describe('getId', () => {
+        it('Returns ID', () => {
+            expect(manager.getId()).toBe('4')
+        });
+    });
+    describe('getEmail', () => {
+        it('Returns Email', () => {
+            expect(manager.getEmail()).toBe('bigboss@gmail.com')
+        });
+    });
+    describe('getOffice', () => {
+        it('Returns Office Number', () => {
+            expect(manager.getOffice()).toBe('555-5555')
         });
     });
 });

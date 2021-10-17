@@ -1,7 +1,7 @@
 const Engineer = require("../lib/engineer")
 
 describe('Engineer class', () => {
-    const engineer = new Engineer('Robin', 'Engineer', '2', 'ijustworkhere@gmail.com', 'gitusername');
+    const engineer = new Engineer('Robin', 'Engineer', '2', 'robin@gmail.com', 'gitusername');
 
     describe('Engineer name', () => {
         it('Has a name', () => {
@@ -20,12 +20,37 @@ describe('Engineer class', () => {
     });
     describe('Engineer email', () => {
         it('Has an email', () => {
-            expect(engineer.email).toBe('ijustworkhere@gmail.com')
+            expect(engineer.email).toBe('robin@gmail.com')
         });
     });
     describe('Engineer Github username', () => {
         it('Has a Github username', () => {
             expect(engineer.github).toBe('gitusername')
+        });
+    });
+    describe('getName', () => {
+        it('Returns Name', () => {
+            expect(engineer.getName()).toBe('Robin')
+        });
+    });
+    describe('getRole', () => {
+        it('Returns Role', () => {
+            expect(engineer.getRole()).toBe('Engineer')
+        });
+    });
+    describe('getId', () => {
+        it('Returns ID', () => {
+            expect(engineer.getId()).toBe('2')
+        });
+    });
+    describe('getEmail', () => {
+        it('Returns Email', () => {
+            expect(engineer.getEmail()).toBe('robin@gmail.com')
+        });
+    });
+    describe('getGithub', () => {
+        it('Returns Github', () => {
+            expect(engineer.getGithub()).toBe('gitusername')
         });
     });
 });

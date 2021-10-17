@@ -23,4 +23,24 @@ describe('Employee class', () => {
             expect(employee.email).toBe('test@fake.com')
         });
     });
+    describe('getName', () => {
+        it('Returns Name', () => {
+            expect(employee.getName()).toBe('Tyler')
+        });
+    });
+    describe('getRole', () => {
+        it('Returns Role', () => {
+            expect(employee.getRole()).toBe('Employee')
+        });
+    });
+    describe('getId', () => {
+        it('Returns ID', () => {
+            expect(employee.getId()).toBe('1')
+        });
+    });
+    describe('getEmail', () => {
+        it('Returns Email', () => {
+            expect(employee.getEmail()).toBe('test@fake.com')
+        });
+    });
 });
