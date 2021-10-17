@@ -117,15 +117,15 @@ const indexTemplate = `
 <body>
     
 <header class="header">
-    <h1>Team Name</h1>
+    <h1>My Team</h1>
 </header>
 
 <main>
 <div class="employees">
 
-${teamTemplate}
+`
 
-
+const endIndex = `
 </div>
 
 </main>
@@ -134,6 +134,7 @@ ${teamTemplate}
 </html>
 `
 
+// Manager template
 const managerTemplate = `
 <div class="member-card"> 
         <div class="card-header">
@@ -148,6 +149,7 @@ const managerTemplate = `
     </div>
 `
 
+// Engineer template
 const engineerTemplate = `
 <div class="member-card"> 
         <div class="card-header">
@@ -162,6 +164,7 @@ const engineerTemplate = `
     </div>
 `
 
+// Intern template
 const internTemplate = `
 <div class="member-card"> 
         <div class="card-header">
@@ -176,7 +179,45 @@ const internTemplate = `
     </div>
 `
 
-function generateHtml() {
-    console.log(employeeTeam);
+const teamTemplate = [];
 
+// Function to write html page
+function generateHtml() {
+    fs.writeFile('genIndex.html', indexTemplate, function(err) {
+        if (err) {
+            throw err;
+        }
+    })
+    console.log(employeeTeam);
+    for (i=0; i<employeeTeam.length; i++) {
+        if (employeeTeam[i].role == 'Manager') {
+            fs.appendFile('genIndex.html', managerTemplate, function(err) {
+                if (err) {
+                    throw err;
+                }
+            })
+        }
+        else if (employeeTeam[i].role == 'Engineer') {
+            fs.appendFile('genIndex.html', engineerTemplate, function(err) {
+                if (err) {
+                    throw err;
+                }
+            })
+        }
+        else if (employeeTeam[i].role == 'Intern') {
+            fs.appendFile('genIndex.html', internTemplate, function(err) {
+                if (err) {
+                    throw err;
+                }
+            })
+        }
+        else {console.log('Members not grabbed')};
+    }
+    fs.appendFile('genIndex.html', endIndex, function(err) {
+        if (err) {
+            throw err;
+        }
+
+    })
+    console.log('Generated Html');
 }
