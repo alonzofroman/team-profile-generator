@@ -188,7 +188,7 @@ function internTemplate() {
 
 // Function to write html page
 function generateHtml() {
-    fs.writeFile('./dist/index.html', indexTemplate, function (err) {
+    fs.writeFileSync('./dist/index.html', indexTemplate, function (err) {
         if (err) {
             throw err;
         }
@@ -213,7 +213,7 @@ function generateEnd() {
 function generateCards() {
     for (i = 0; i < employeeTeam.length; i++) {
         if (employeeTeam[i].role == 'Manager') {
-            fs.appendFile('./dist/index.html', managerTemplate(employeeTeam[i]), function (err) {
+            fs.appendFileSync('./dist/index.html', managerTemplate(employeeTeam[i]), function (err) {
                 if (err) {
                     throw err;
                 }
