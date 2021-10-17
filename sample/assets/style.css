@@ -1,0 +1,37 @@
+
+
+.header {
+    background-color: rgb(107, 107, 107);
+    color: black;
+    text-align: center;
+}
+
+.employees {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-card {
+    display: block;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    height: 40%;
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.card-header {
+    background-color: rgb(122, 122, 122);
+    color: black;
+    text-align: center;
+}
+
+.card-body {
+    text-align: center;
+}
+
