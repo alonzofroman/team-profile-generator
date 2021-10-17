@@ -91,7 +91,7 @@ function anotherMember() {
         choices: ['yes', 'no']
     }]).then(extraMember => {
         if (extraMember.newEmployee === 'yes') {
-            console.log('press up arrow to continue');
+            // console.log('press up arrow to continue');
             init();
         }
         else {
@@ -217,7 +217,7 @@ function generateHtml() {
             })
         }
         else {console.log('Members not grabbed')};
-    }
+    };
     fs.appendFile('./dist/index.html', endIndex, function(err) {
         if (err) {
             throw err;
