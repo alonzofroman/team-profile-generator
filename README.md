@@ -59,10 +59,11 @@ describe('Manager class', () => {
 - I created templates for the HTML and employee cards, styled with a CSS page
 - I created functions to prompt the user for the required information on each employee
 - I created functions that used that data in order to generate an HTML page of the team profiles
+- I created an instructional video to describe the process of installing and using the program
 
 ## Instructional Video
 
-* [Video]()
+* [Video](https://watch.screencastify.com/v/wG2qRxJs9EXdpiNqEBjQ)
 
 ## Built With
 
