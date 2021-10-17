@@ -162,7 +162,7 @@ function engineerTemplate() {
             <div class="card-body">
                 <p class="member-id">ID: ${employeeTeam[i].id}</p>
                 <p class="member-email">Email: <a href="mailto:${employeeTeam[i].email}">${employeeTeam[i].email}</a></p>
-                <p class="member-cred">Github: <a href="https://github.com/${employeeTeam[i].github}">${employeeTeam[i].github}</a></p>
+                <p class="member-cred">Github: <a target="_blank" href="https://github.com/${employeeTeam[i].github}">${employeeTeam[i].github}</a></p>
             </div>
         </div>
     `
